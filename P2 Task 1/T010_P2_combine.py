@@ -1,11 +1,23 @@
+#Adnan Hafeez - T010 - 101210710
+
 #Import required modules.
 from Cimpl import choose_file, load_image, copy, create_color, set_color, \
-    Image, get_color, create_image
+    Image, get_color, create_image, show
 from unit_testing import check_equal
 
 def combine(red: Image, green: Image, blue:Image) -> Image:
-    """Return an image that is a combination of the red, blue and green channels. By loading a red, green and blue filtered
+    """
+    #Adnan Hafeez - T010 - 101210710
+
+    Return an image that is a combination of the red, blue and green channels.
+    By loading a red, green and blue filtered
     set of images in that specific order only.
+
+    >>> red_img = load_image(choose_file())
+    >>> green_img = load_image(choose_file())
+    >>> blue_img = load_image(choose_file())
+    >>> combined = combine(red_img, green_img, blue_img)
+    >>> show(combined)
     """
     new_image = copy(red)
     for x, y, _ in red:
@@ -18,7 +30,14 @@ def combine(red: Image, green: Image, blue:Image) -> Image:
 
 def test_combine() -> None:
     """
-    A test function for the combined filter.
+    #Adnan Hafeez - T010 - 101210710
+
+    A test function for the combined filter. Utilizes a 6x1 test image for which an expected and calculated pixel value
+    is obtained by applying the combine filter. The expected pixel values for each red, green, and blue image are compared
+    with the calculated pixel values obtained using the combine filter. If a test passes, "PASSED" is printed, otherwise "FAILED"
+    for each pixel value (x,y) respectively.
+
+    >>> test_combine()
     """
     # This test function checks if combine correctly combines the R G B channels:
     # R=(0, 0, 0), G=(0, 0, 0), B=(0, 0, 0) to (0, 0, 0)  # no color
@@ -77,10 +96,10 @@ def test_combine() -> None:
 
 
 if __name__ == "__main__":
-    #red_img = load_image(choose_file())
-    #green_img = load_image(choose_file())
-    #blue_img = load_image(choose_file())
+    red_img = load_image(choose_file())
+    green_img = load_image(choose_file())
+    blue_img = load_image(choose_file())
     # combine images
-    #combined = combine(red_img, green_img, blue_img)
-    #show(combined)
+    combined = combine(red_img, green_img, blue_img)
+    show(combined)
     test_combine()
