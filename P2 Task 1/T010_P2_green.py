@@ -26,7 +26,8 @@ def green_channel(image : Image)-> Image:
 
 #Test Function
 def test_green() -> None:  
-    '''A test function for green_channel.
+    '''
+    A test function for green_channel.
     
     >>> test_green()
     '''   
