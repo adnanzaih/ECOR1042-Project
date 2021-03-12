@@ -1,6 +1,7 @@
 #Logan DeLaat - T010 - 101182975
 
 import Cimpl
+import unit_testing
 
 #fuction definitions
 def red_channel(image: Cimpl.Image) -> Cimpl.Image:
@@ -16,8 +17,8 @@ def red_channel(image: Cimpl.Image) -> Cimpl.Image:
     return copy_image
     
 #testing function
-import unit_testing
-import Cimpl
+
+
 
 def check_red(image: Cimpl.Image) -> None:
     """
@@ -25,20 +26,22 @@ def check_red(image: Cimpl.Image) -> None:
     >>>check_red()
     """
     #create small image with 6 pixels to check
-    test_image = Cimpl.create_image(5,1)
+    test_image = Cimpl.create_image(6,1)
     set_color(test_image, 0, 0, create_color(11, 22, 33))
-    set_color(test_image, 0, 1, create_color(55, 0, 133))
-    set_color(test_image, 0, 2, create_color(568, 782, 33))
-    set_color(test_image, 1, 0, create_color(78, 100, 2))
-    set_color(test_image, 1, 1, create_color(0, 0, 1))
+    set_color(test_image, 1, 0, create_color(55, 0, 133))
+    set_color(test_image, 2, 0, create_color(568, 782, 33))
+    set_color(test_image, 3, 0, create_color(78, 100, 2))
+    set_color(test_image, 4, 0, create_color(0, 0, 1))
+    set_color(test_image, 5, 0, create_color(44, 77, 66))
 
     
-    excpected_image = Cimpl.create_image(5,1)
+    excpected_image = Cimpl.create_image(6,1)
     set_color(test_image, 0, 0, create_color(11, 0, 0))
     set_color(test_image, 1, 0, create_color(55, 0, 0))
-    set_color(test_image, 0, 2, create_color(255, 0, 0))
-    set_color(test_image, 1, 0, create_color(78, 0, 0))
-    set_color(test_image, 1, 1, create_color(0, 0, 0))
+    set_color(test_image, 2, 0, create_color(255, 0, 0))
+    set_color(test_image, 3, 0, create_color(78, 0, 0))
+    set_color(test_image, 4, 0, create_color(0, 0, 0))
+    set_color(test_image, 5, 0, create_color(44, 0, 0))
 
     
     #Comparing expected image to the image produced by red_channel 
