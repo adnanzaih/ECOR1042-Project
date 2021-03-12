@@ -1,0 +1,51 @@
+#Logan DeLaat - T010 - 101182975
+
+import Cimpl
+
+#fuction definitions
+def red_channel(image: Cimpl.Image) -> Cimpl.Image:
+    """
+    Returns a copy of the image in png format which only contains the red components of the original image's pixel's colour
+    >>> image = Cimpl.load_image(Cimpl.choose_file())
+    >>> Cimpl.show(red_channel(image))
+    """
+
+    copy_image = Cimpl.copy(image)
+    for x, y, (r, g, b) in image:
+        Cimpl.set_color(copy_image, x, y, Cimpl.create_color(r,0,0))        
+    return copy_image
+    
+#testing function
+import unit_testing
+import Cimpl
+
+def check_red(image: Cimpl.Image) -> None:
+    """
+    Tests the red_channel function to make sure the result is the same as expected
+    >>>check_red()
+    """
+    #create small image with 6 pixels to check
+    test_image = Cimpl.create_image(5,1)
+    set_color(test_image, 0, 0, create_color(11, 22, 33))
+    set_color(test_image, 0, 1, create_color(55, 0, 133))
+    set_color(test_image, 0, 2, create_color(568, 782, 33))
+    set_color(test_image, 1, 0, create_color(78, 100, 2))
+    set_color(test_image, 1, 1, create_color(0, 0, 1))
+
+    
+    excpected_image = Cimpl.create_image(5,1)
+    set_color(test_image, 0, 0, create_color(11, 0, 0))
+    set_color(test_image, 1, 0, create_color(55, 0, 0))
+    set_color(test_image, 0, 2, create_color(255, 0, 0))
+    set_color(test_image, 1, 0, create_color(78, 0, 0))
+    set_color(test_image, 1, 1, create_color(0, 0, 0))
+
+    
+    #Comparing expected image to the image produced by red_channel 
+    for x, y, col in red_channel(original) : 
+        check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')',
+                     col, get_color(expected, x, y))
+    
+#main script
+file = Cimpl.load_image(Cimpl.choose_file())
+Cimpl.show(red_channel(file))
