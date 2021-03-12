@@ -16,8 +16,8 @@ def green_channel(image : Image)-> Image:
  >>>new_image = green_channel(original_image)
  >>>show(new_image)
  """
- green_image = copy(image)
- for pixel in green_image:
+ green_image = copy(image) #Copies the orginal image to variable green_image
+ for pixel in green_image: #iterates over every pixel and takes only the green component of each pixel
   x, y, (r, g, b) = pixel
   new_colour = create_color( 0,g,0)
   set_color (green_image, x, y, create_color(0,g,0))
