@@ -16,19 +16,20 @@ def green_channel(image : Image)-> Image:
  >>>new_image = green_channel(original_image)
  >>>show(new_image)
  """
- green_image = copy(image) #Copies the orginal image to variable green_image
- for pixel in green_image: #iterates over every pixel and takes only the green component of each pixel
+ green_image = copy(image) #Copies the original image onto variable green_image
+ 
+ for pixel in green_image: #iterates over every pixel in the image and take only the green component of each pixel
   x, y, (r, g, b) = pixel
   new_colour = create_color( 0,g,0)
   set_color (green_image, x, y, create_color(0,g,0))
   
- return green_image
+ return green_image #returns the filtered green image
 
 #Test Function
 def test_green() -> None:  
     '''
-    A test function for green_channel.
-    
+    A test function for green_channel. Uses a 4x1 pixel image as a sample to 
+    test functionality of the green filter.
     >>> test_green()
     '''   
   
@@ -68,3 +69,4 @@ image = load_image(choose_file())
 green_image = green_channel(image)
 show(green_image)
 test_green()
+
