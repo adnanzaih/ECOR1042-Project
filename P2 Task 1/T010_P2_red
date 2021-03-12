@@ -29,19 +29,19 @@ def check_red() -> None:
     test_image = create_image(6,1)
     set_color(test_image, 0, 0, create_color(11, 22, 33))
     set_color(test_image, 1, 0, create_color(55, 0, 133))
-    set_color(test_image, 2, 0, create_color(568, 782, 33))
+    set_color(test_image, 2, 0, create_color(14, 72, 33))
     set_color(test_image, 3, 0, create_color(78, 100, 2))
     set_color(test_image, 4, 0, create_color(0, 0, 1))
     set_color(test_image, 5, 0, create_color(44, 77, 66))
 
     
-    excpected_image = create_image(6,1)
-    set_color(test_image, 0, 0, create_color(11, 0, 0))
-    set_color(test_image, 1, 0, create_color(55, 0, 0))
-    set_color(test_image, 2, 0, create_color(255, 0, 0))
-    set_color(test_image, 3, 0, create_color(78, 0, 0))
-    set_color(test_image, 4, 0, create_color(0, 0, 0))
-    set_color(test_image, 5, 0, create_color(44, 0, 0))
+    expected_image = create_image(6,1)
+    set_color(expected_image, 0, 0, create_color(11, 0, 0))
+    set_color(expected_image, 1, 0, create_color(55, 0, 0))
+    set_color(expected_image, 2, 0, create_color(14, 0, 0))
+    set_color(expected_image, 3, 0, create_color(78, 0, 0))
+    set_color(expected_image, 4, 0, create_color(0, 0, 0))
+    set_color(expected_image, 5, 0, create_color(44, 0, 0))
 
     
     #Comparing expected image to the image produced by red_channel 
