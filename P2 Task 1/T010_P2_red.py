@@ -6,6 +6,7 @@ from unit_testing import *
 #fuction definitions
 def red_channel(image: Image) -> Image:
     """
+    Author Logan DeLaat
     Returns a copy of the image in png format which only contains the red components of the original image's pixel's colour
     >>> image = load_image(choose_file())
     >>> show(red_channel(image))
@@ -22,6 +23,7 @@ def red_channel(image: Image) -> Image:
 
 def check_red() -> None:
     """
+    Author Logan DeLaat
     Tests the red_channel function to make sure the result is the same as expected
     >>>check_red() 
     """
