@@ -1,32 +1,32 @@
 #Logan DeLaat - T010 - 101182975
 
-import Cimpl
-import unit_testing
+from Cimpl import *
+from unit_testing import *
 
 #fuction definitions
-def red_channel(image: Cimpl.Image) -> Cimpl.Image:
+def red_channel(image: Image) -> Image:
     """
     Returns a copy of the image in png format which only contains the red components of the original image's pixel's colour
-    >>> image = Cimpl.load_image(Cimpl.choose_file())
-    >>> Cimpl.show(red_channel(image))
+    >>> image = load_image(choose_file())
+    >>> show(red_channel(image))
     """
 
-    copy_image = Cimpl.copy(image)
+    copy_image = copy(image)
     for x, y, (r, g, b) in image:
-        Cimpl.set_color(copy_image, x, y, Cimpl.create_color(r,0,0))        
+        set_color(copy_image, x, y, create_color(r,0,0))        
     return copy_image
     
 #testing function
 
 
 
-def check_red(image: Cimpl.Image) -> None:
+def check_red() -> None:
     """
     Tests the red_channel function to make sure the result is the same as expected
     >>>check_red()
     """
     #create small image with 6 pixels to check
-    test_image = Cimpl.create_image(6,1)
+    test_image = create_image(6,1)
     set_color(test_image, 0, 0, create_color(11, 22, 33))
     set_color(test_image, 1, 0, create_color(55, 0, 133))
     set_color(test_image, 2, 0, create_color(568, 782, 33))
@@ -35,7 +35,7 @@ def check_red(image: Cimpl.Image) -> None:
     set_color(test_image, 5, 0, create_color(44, 77, 66))
 
     
-    excpected_image = Cimpl.create_image(6,1)
+    excpected_image = create_image(6,1)
     set_color(test_image, 0, 0, create_color(11, 0, 0))
     set_color(test_image, 1, 0, create_color(55, 0, 0))
     set_color(test_image, 2, 0, create_color(255, 0, 0))
@@ -45,10 +45,11 @@ def check_red(image: Cimpl.Image) -> None:
 
     
     #Comparing expected image to the image produced by red_channel 
-    for x, y, col in red_channel(original) : 
+    for x, y, col in red_channel(test_image) : 
         check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')',
-                     col, get_color(expected, x, y))
+                     col, get_color(expected_image, x, y))
     
 #main script
-file = Cimpl.load_image(Cimpl.choose_file())
-Cimpl.show(red_channel(file))
+file = load_image(choose_file())
+show(red_channel(file))
+check_red()
