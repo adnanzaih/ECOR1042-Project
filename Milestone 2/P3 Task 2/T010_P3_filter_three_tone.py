@@ -36,7 +36,7 @@ def three_tone (original_image:Image, colour1:str, colour2:str, colour3:str) -> 
         if colour3 == i[0]:
             #print( i[1], i[2] , i[3])
             new_colour.append((i[1],i[2],i[3]))    
-        print (new_colour)
+        #print (new_colour)
     three_tone_image = copy(original_image)
     for pixel in three_tone_image: #iterates over every pixel in the image and take only the green component of each pixel
         x, y, (r, g, b) = pixel
