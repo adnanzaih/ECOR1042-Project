@@ -30,24 +30,29 @@ def three_tone (original_image:Image, colour1:str, colour2:str, colour3:str) -> 
         if i[0] == colour1:
             new_colour.append((i[1],i[2],i[3]))
             #print( i[1], i[2] , i[3])
-        if colour2 ==i[0]:
+
+    for i in colour_list:
+        if i[0] == colour2:
             #print( i[1], i[2] , i[3])
             new_colour.append((i[1],i[2],i[3]))
-        if colour3 == i[0]:
+
+    for i in colour_list:
+        if i[0] == colour3:
             #print( i[1], i[2] , i[3])
-            new_colour.append((i[1],i[2],i[3]))    
-        #print (new_colour)
+            new_colour.append((i[1],i[2],i[3]))
+            #print (new_colour)
+
     three_tone_image = copy(original_image)
     for pixel in three_tone_image: #iterates over every pixel in the image and take only the green component of each pixel
         x, y, (r, g, b) = pixel
         brightness = (r + g + b) / 3 #calculates brightness
-        if brightness < 85:
+        if brightness >= 0 and brightness <= 84:
             c1,c2,c3 = new_colour[0]
             new_color = create_color(c1,c2,c3)
-        elif brightness < 171:
+        elif brightness >= 85 and brightness <= 170:
             c1,c2,c3 = new_colour[1] 
             new_color = create_color(c1,c2,c3) 
-        elif brightness < 256:
+        elif brightness >= 171 and brightness <= 255:
             c1,c2,c3 = new_colour[2] 
             new_color = create_color(c1,c2,c3)
         set_color(three_tone_image,x,y,new_color)
