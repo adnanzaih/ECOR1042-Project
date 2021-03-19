@@ -14,8 +14,7 @@ from T010_P3_filter_three_tone import three_tone
 def test_three_tone() -> None:
     '''
     A test function for three tone filter. Using a 6x1 pixel image as a sample to
-    test functionality of the three tone filter. Tests tree_tone for input colours (lemon, white, blood) and
-    (green, pink, pink)
+    test functionality of the three tone filter. Tests tree_tone for input colours (lemon, white, blood).
 
     Author: Adnan Hafeez
 
