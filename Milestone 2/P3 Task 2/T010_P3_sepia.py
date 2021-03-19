@@ -1,5 +1,5 @@
-from Cimpl import *
-from simple_Cimpl_filters import *
+from Cimpl import Image, set_color, create_color, load_image, choose_file, show
+from simple_Cimpl_filters import grayscale 
 
 def sepia_filter(image: Image) -> Image:
     """ Returns an image with a asepia filter applied meaning it is grayscale image with a yellow tint. The image is meant to look old.
