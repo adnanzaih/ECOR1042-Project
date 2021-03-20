@@ -37,6 +37,4 @@ def test_posterize() -> None:
                      col, get_color(expected_image, x, y)) #gets the colour of the pixel and compares it    
         
 if __name__ == "__main__":
-    #file = load_image(choose_file())
-    #show(sepia_posterize(file))
     test_posterize()     
