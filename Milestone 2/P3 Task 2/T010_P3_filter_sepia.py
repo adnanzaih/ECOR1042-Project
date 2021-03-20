@@ -1,4 +1,4 @@
-#Logan
+#Logan DeLaat - T010 - 101182975
 
 from Cimpl import copy, Image, set_color, create_color, load_image, choose_file, show
 from simple_Cimpl_filters import grayscale 
@@ -6,10 +6,9 @@ from simple_Cimpl_filters import grayscale
 def sepia_filter(image: Image) -> Image:
     """ Returns an image with a asepia filter applied meaning it is grayscale image with a yellow tint. The image is meant to look old.
 
-    Author: Logan ...
-    >>>
-    >>>
-    >>>
+    Author: Logan DeLaat
+    >>>file = load_image(choose_file())
+    >>>show(sepia_filter(file))
     """
     
     #call grayscale function to make the image gray
