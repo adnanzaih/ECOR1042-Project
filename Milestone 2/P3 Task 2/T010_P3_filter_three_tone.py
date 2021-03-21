@@ -61,5 +61,5 @@ def three_tone (original_image:Image, colour1:str, colour2:str, colour3:str) -> 
 
 if __name__ == "__main__":
     original_image = load_image(choose_file())
-    three_tone_image = three_tone(original_image,"blood","green","blue")
+    three_tone_image = three_tone(original_image,"lemon","blood","black")
     show(three_tone_image)

@@ -9,10 +9,7 @@ from Cimpl import choose_file, load_image, copy, create_color, set_color, \
 def posterize(image: Image) -> Image:
     """
     The function returns the input image modified to have a smaller number of colours than the original image.
-    The function divides the range of RGB values into four equal sized quadrants: 0 to 63, with a midpoint of 31.
-    64 to 127 with a midpoint of 95. 128 to 191 with a midpoint of 159. And 192 to 255 with a midpoint of 223. Each
-    RGB component of the original image is reassigned to its midpoint value depending on which quadrant the original value
-    falls into.
+    Applies a posterize filter to the input image.
 
     Author: Adnan Hafeez
     >>> image = load_image(choose_file())
@@ -42,5 +39,5 @@ def posterize(image: Image) -> Image:
 
 if __name__ == "__main__":
     image = load_image(choose_file())
-    new_image = posterize(image)
-    show(new_image)
+    posterized_image = posterize(image)
+    show(posterized_image)

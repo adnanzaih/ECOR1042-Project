@@ -1,4 +1,4 @@
-#ECOR 1042 P3 Task 2, Filter Test Function
+#ECOR 1042 P3 Task 3, Filter Test Function
 
 #10: three tone image filter testing function
 #Adnan Hafeez 101210710
@@ -14,7 +14,7 @@ from T010_P3_filter_three_tone import three_tone
 def test_three_tone() -> None:
     '''
     A test function for three tone filter. Using a 6x1 pixel image as a sample to
-    test functionality of the three tone filter. Tests tree_tone for input colours (lemon, white, blood).
+    test functionality of the three tone filter. Tests tree_tone filter for input colours (lemon, white, blood).
 
     Author: Adnan Hafeez
 
@@ -33,12 +33,12 @@ def test_three_tone() -> None:
     # Create an image that's identical to the one a correct implementation of
     # green_channel should produce when it is passed original.
     expected_img1 = create_image(6, 1)
-    set_color(expected_img1, 0, 0,  create_color(255, 255, 0))
-    set_color(expected_img1, 1, 0,  create_color(255, 255, 255))
-    set_color(expected_img1, 2, 0,  create_color(255, 0, 0))
-    set_color(expected_img1, 3, 0,  create_color(255, 255, 255))
-    set_color(expected_img1, 4, 0,  create_color(255, 255, 0))
-    set_color(expected_img1, 5, 0,  create_color(255, 255, 255))
+    set_color(expected_img1, 0, 0,  create_color(255, 255, 0)) #colour1
+    set_color(expected_img1, 1, 0,  create_color(255, 255, 255)) #colour2
+    set_color(expected_img1, 2, 0,  create_color(255, 0, 0)) #colour 3
+    set_color(expected_img1, 3, 0,  create_color(255, 255, 255)) #colour 2
+    set_color(expected_img1, 4, 0,  create_color(255, 255, 0)) #colour 1
+    set_color(expected_img1, 5, 0,  create_color(255, 255, 255)) #colour 1
 
 
     # Now compare the transformed image returned by the filter with the
