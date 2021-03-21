@@ -7,7 +7,7 @@ def extreme_contrast(image: Image) -> Image:
     """
     Author: Ayesha Dassanayake
     
-    Returns a new png image changing the red, green, and blue components to their maximum or minimum values
+    Returns a new image changing the red, green, and blue components to their maximum or minimum values
     >>> image = load_image(choose_file())
     >>> new_image = extreme_contrast(image)
     >>> show(new_image)
