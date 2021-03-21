@@ -3,6 +3,7 @@
 
 from Cimpl import *
 from unit_testing import check_equal
+from T010_P3_extreme_contrast import extreme_contrast
 
     
 def test_extreme_contrast() -> str:
