@@ -2,7 +2,7 @@
 
 from Cimpl import choose_file, load_image, show, Image, copy, create_color, set_color, get_color, create_image
 from unit_testing import check_equal
-from AdnanHorzFlip import flip_horizontal
+from T010_P4_filter_horizontal import flip_horizontal
 
 def test_horizontal() -> None:
     """
