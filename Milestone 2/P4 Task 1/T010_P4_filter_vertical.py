@@ -1,39 +1,21 @@
-#ECOR 1042 P3 Task 2, Individual Filter
+#Logan DeLaat - T010 - 101182975
 
-# 10: Vertical flip filter
-#Vincent Chen 101196001 
+from Cimpl import Image, set_color, create_color, load_image, choose_file, show, copy, get_height
 
-#Import all functions from Cimpl module
-from Cimpl import *
-
-def flip_vertical(orginal_image:Image)-> Image:
+def flip_veritcal(image: Image)-> Image:
+    """Returns a copy of the image with that is flipped over an imaginary horizontal line in the centre of the image
+    >>>file = load_image(choose_file())
+    >>>show(flip_vertical(file))
     """
-    Vincent Chen , 101196001
-    Returns a copy of an image that is flipped along a horizontal line.
-    The result is an upside-down copy of original_image called v_flipped_image
     
-    >>>original_image = load_image(choosefile())
-    >>>three_tone_image = flip_vertical(original_image)
-    >>>show(v_flipped_image)
-    """
-    #v_flipped_image= copy(original_image)
-    #width = get_width(original_image)
-    #height = get_height(original_image)
-    #for y in range(height):
-        #y_flip = height-(y+1)
-        #for x in range(width):
-            #color = get_color(original_image,x,y)
-            #set_color(v_flipped_image,x,y_flip,color)
+    bottom = get_height(image) #This is needed to find the total height of the image so that the distance the pixel need to be "swaped" can be caluclated. 
+    copy_image = copy(image)
+    for x, y, (r, g, b) in image:
+        set_color(copy_image, x, (bottom-y-1), create_color(r,g,b)) #Replaces pixel's colour with the colour of the pixel equal distance away
+
             
-    v_flipped_image= copy(original_image)
-    for pixel in v_flipped_image: #iterates over every pixel in the image and take only the green component of each pixel
-        x, y, (r, g, b) = pixel
-        color = get_color(original_image,x,y)
-        set_color(v_flipped_image,x,-y-1,color)   
-    return v_flipped_image
-            
-if __name__ == "__main__":
-    original_image = load_image(choose_file())
-    v_flipped_image = flip_vertical(original_image)
-    show(v_flipped_image)
+    return(copy_image)
         
+if __name__ == "__main__":
+    file = load_image(choose_file())
+    show(flip_veritcal(file))
