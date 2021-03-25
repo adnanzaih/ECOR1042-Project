@@ -1,0 +1,47 @@
+#Draw curve function
+import numpy
+def _interpolation (sorted_list:list)-> list:
+    """
+    returns the coefficients of a polynomial in the form: ax^2 + bx + c
+    
+    if there are 2 points in sorted_list, then an interpolated first order polynomial will be returned
+    if there are 3 points in sorted_list, then an interpolated second order polynomial will be returned
+    if there are more than 3 points in sorted_list, then a first order polynomial regression line will be returned
+    
+    >>> _interpolation([[10,40],[70,25]])
+    [0, -0.25000000000000017, 42.50000000000001]
+    
+    >>> _interpolation([[30,50],[45,70],[60,120]])
+    [0.0666666666666663, -3.6666666666666528, 100.00000000000018]
+    
+    >>> _interpolation([[30,20],[55,60],[60,70],[80,140]])
+    [0.034168039538714924, -1.364250411861606, 30.291598023063976]
+    """
+    x_coor=[]
+    y_coor=[]
+    for i in range (len(sorted_list)):
+        x_coor.append (sorted_list[i][0])
+        y_coor.append (sorted_list[i][1])
+    if len(sorted_list) == 2: 
+        coefficients=[0]    #When there are 2 points, the first coefficient (a) will always be zero since it is a first degree polynomial
+        poly_list = numpy.polyfit(x_coor, y_coor, 1)    #Creates a first degree polynomial's coefficients
+        coefficients.append (poly_list[0])
+        coefficients.append (poly_list[1])
+
+    else:
+        coefficients=[]
+        poly_list = numpy.polyfit(x_coor, y_coor, 2)
+        coefficients.append (poly_list[0])
+        coefficients.append (poly_list[1])
+        coefficients.append (poly_list[2])
+        
+    return coefficients        
+        
+
+
+one=_interpolation([[10,40],[70,25]])
+print(one)
+two=_interpolation([[30,50],[45,70],[60,120]])
+print(two)
+three=_interpolation([[30,20],[55,60],[60,70],[80,140]])
+print(three)
