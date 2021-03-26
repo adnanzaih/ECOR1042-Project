@@ -106,7 +106,7 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
     for x in range(img_width-1):
         if np.polyval(func_coeff,x) < img_height:
             y_line = floor(np.polyval(func_coeff,x))
-            for y in range(y_line-2, y_line+3):
+            for y in range(y_line-4, y_line+4):
                 if y>=0 and y<img_height:
                     set_color(img_copy, x,y, create_color(_pick_color(color)[0],_pick_color(color)[1],_pick_color(color)[2]))
 
