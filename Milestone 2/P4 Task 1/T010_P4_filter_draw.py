@@ -98,9 +98,13 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
     if pointList == None:
         numPoints = int(input("How many numbers? (Must be greater than or equal to 2): "))
         point_list = _request_points(numPoints)
+        func_coeff = _interpolation(point_list)
+        point_list_border = (_image_border_finding([img_height,img_width],func_coeff))
+    else:
+        point_list = sort_points(pointList)
+        func_coeff = _interpolation(point_list)
+        point_list_border = (_image_border_finding([img_height,img_width],func_coeff))
 
-    func_coeff = _interpolation(point_list)
-    point_list = (_image_border_finding([img_height,img_width],func_coeff))
 
     #draw line
     for x in range(img_width-1):
@@ -110,7 +114,7 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
                 if y>=0 and y<img_height:
                     set_color(img_copy, x,y, create_color(_pick_color(color)[0],_pick_color(color)[1],_pick_color(color)[2]))
 
-    return (img_copy, point_list)
+    return (img_copy, point_list_border)
 
 if __name__ == "__main__":
     image = load_image(choose_file())
