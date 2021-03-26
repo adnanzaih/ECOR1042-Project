@@ -1,20 +1,21 @@
 #Adnan Hafeez 101210710
 
+#Import all relevant libraries
 from Cimpl import choose_file, load_image, show, Image, copy, create_color, set_color, get_color, create_image
 from unit_testing import check_equal
-from T010_P4_filter_horizontal import flip_horizontal
+from T010_P4_filter_horizontal import flip_horizontal #import function to be tested.
 
 def test_horizontal() -> None:
     """
     A test function for horizontal flip filter. Using a 6x1 pixel image as a sample to
-    test functionality.
+    test functionality against an expected image array given as expected.
 
     Author: Adnan Hafeez
     >>> test_horizontal()
     """
 
     #Creates an image with 4 pixels
-    original = create_image(6,1)
+    original = create_image(6,1) #create image to be tested
     set_color(original, 0, 0,  create_color(0, 0, 0))
     set_color(original, 1, 0,  create_color(10, 20, 60))
     set_color(original, 2, 0,  create_color(180, 199, 196))
@@ -24,7 +25,7 @@ def test_horizontal() -> None:
 
 
     #Expected transformation of image
-    expected = create_image(6, 1)
+    expected = create_image(6, 1) #create expected image
     set_color(expected, 0, 0,  create_color(124, 45, 0))
     set_color(expected, 1, 0,  create_color(255, 255, 255))
     set_color(expected, 2, 0,  create_color(255, 255, 255))

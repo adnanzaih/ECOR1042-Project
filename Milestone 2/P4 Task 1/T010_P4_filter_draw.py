@@ -1,23 +1,31 @@
 #Adnan Hafeez 101210710
 
+#Import relevant libraries
 from Cimpl import choose_file, load_image, show, Image, copy, create_color, set_color, get_color, create_image,\
     get_width,get_height
-from point_manipulation import sort_points,  get_x_y_lists
+from point_manipulation import sort_points,  get_x_y_lists #import useful libraries for sorting
 from math import floor
-import numpy as np
+import numpy as np #for interpolation
 
 
 def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
     """
+    Takes an PNG and a colour name as a string parameter. Requires a list of points as a parameter or user input.
+    Returns a copy of the original image with a line draw ontop of the image given the input colour and a polynomial
+    fitted to the points provided by the user.
 
     Author: Adnan Hafeez
-    :param image:
-    :return:
     """
     img_height = get_height(image)
     img_width = get_width(image)
 
     def _pick_color(colour:str) -> tuple:
+        """
+        Simple colour picking function, takes in a string name for the colour and returns a tuple of the RGB values of the
+        colour.
+
+        Author: Adnan Hafeez
+        """
         color_lst = [("black",0,0,0),("white", 255,255,255),
                      ("blood",255,0,0), ("green",0,255,0),
                      ("blue",0,0,255), ("lemon",255, 255,0),
@@ -28,6 +36,10 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
                 return (i[1],i[2],i[3])
 
     def _request_points(numPoints) -> list:
+        """Interactively request points from the user if not inputted in the original function call.
+        Return the points sorted in ascending order as a list.
+        Author: Adnan Hafeez
+        """
         point_list = []
         for i in range(numPoints):
             user_x_input = input("Please enter the x-coordinates of your point #({0}): ".format(i+1))
@@ -36,6 +48,12 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
         return sort_points(point_list) #return point listed sorted in ascending order
 
     def _interpolation(points: list) -> list:
+        """
+        Performs a 1 degree polynomial fit if the number of points submitted by the user is 2, and a quadratic fit 
+        if points are greater than 2.
+        Author: Adnan Hafeez
+        """""
+
         if len(points) <=2:
             _deg = 1
         else:
@@ -45,7 +63,9 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
 
     def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> int:
         """Solves f(x)-val = 0 for x between 0 and max_x where polycoeff contains the coefficients of f,
-        using EPSILON = 1. Returns None if there is no solution between the bounds
+        using EPSILON = 1. Returns None if there is no solution between the bounds.
+
+        Author: Adnan Hafeez
         """
         EPSILON = 1
         step = 1
@@ -66,10 +86,10 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
 
     def _image_border_finding(image_size: list, polycoeff: list) -> list:
         """
+        Takes the size of the image and interpolation coefficients of the polynomial function.
+        Returns the pixels where the curve intersects the image borders.
 
-        :param image_size: [img_height, img_width]
-        :param polycoeff:
-        :return:
+        Author: Adnan Hafeez
         """
         #image_size[0] = image height
         #image_size[1] = image width
@@ -118,7 +138,7 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
 
 if __name__ == "__main__":
     image = load_image(choose_file())
-    output = draw_curve(image,"blood", pointList=None)
+    output = draw_curve(image, "lemon", pointList=None)
     print(output[1])
     show(output[0])
 
