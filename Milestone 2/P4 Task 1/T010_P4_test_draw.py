@@ -63,10 +63,9 @@ def test_draw_curve():
         check_equal("Checking pixel @(" + str(x) + "," + str(y) + ")" , col,get_color(expected,x,y))
         
     for i in range(len(border_list)):
-        if border_list[i][0] == curve_border[i][0] and  border_list[i][1] == curve_border[i][1]:
-            print("Borders match, pass")
-        else:
-            print("Borders dont match, failed")
+        check_equal("Checking border No." +str(i+1)+ " @ x-coordinate:",border_list[i][0],curve_border[i][0])
+        check_equal("Checking border No." +str(i+1)+ " @ y-coordinate:",border_list[i][1],curve_border[i][1])
+         
                 
     
 
