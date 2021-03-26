@@ -95,8 +95,10 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
 
     img_copy = copy(image)
     print("Image size (height, width)",(get_height(img_copy), get_width(img_copy)))
-    numPoints = int(input("How many numbers? (Must be greater than or equal to 2): "))
-    point_list = _request_points(numPoints)
+    if pointList == None:
+        numPoints = int(input("How many numbers? (Must be greater than or equal to 2): "))
+        point_list = _request_points(numPoints)
+
     func_coeff = _interpolation(point_list)
     point_list = (_image_border_finding([img_height,img_width],func_coeff))
 
