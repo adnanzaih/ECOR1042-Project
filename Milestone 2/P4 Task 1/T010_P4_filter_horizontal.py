@@ -3,7 +3,7 @@
 #Import all functions from Cimpl module
 from Cimpl import *
 
-def flip_horizontal(orginal_image:Image)-> Image:
+def flip_horizontal(original_image:Image) -> Image:
     """
     Vincent Chen , 101196001
     Returns a copy of an image that is flipped along a vertical line.
@@ -26,7 +26,7 @@ def flip_horizontal(orginal_image:Image)-> Image:
     for pixel in h_flipped_image: #iterates over every pixel in the image and take only the green component of each pixel
         x, y, (r, g, b) = pixel
         color = get_color(original_image,x,y)
-        set_color(h_flipped_image,-x,y,color)   
+        set_color(h_flipped_image,-x-1,y,color)
     return h_flipped_image
             
 if __name__ == "__main__":

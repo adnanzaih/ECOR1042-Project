@@ -10,7 +10,7 @@ def test_draw_curve():
     tests the draw curve function
     >>>test_draw_curve()    
     """
-    print ("Testing draw cruve")
+    print ("Testing draw curve")
         
     test_image_color = create_color(255,255,255)
         
