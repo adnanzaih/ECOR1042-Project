@@ -12,11 +12,11 @@ def test_draw_curve():
     """
     print ("Testing draw cruve")
         
-    test_image_color = create_color(255,255,255)
+    test_image_color = create_color(255,255,255) 
         
-    original = create_image(9,9,test_image_color)
+    original = create_image(9,9,test_image_color) #Create a 9x9 pixel image
         
-    expected = create_image(9,9,test_image_color)
+    expected = create_image(9,9,test_image_color) #Create the expected image that the draw_curve function will return
         
     set_color(expected,0,0, create_color(255,0,0))
     set_color(expected,0,1, create_color(255,0,0))
@@ -54,18 +54,23 @@ def test_draw_curve():
     set_color(expected,4,7, create_color(255,0,0))
     set_color(expected,4,8, create_color(255,0,0))
         
-    border_list = [(0,0),(0,0),(4,8)]
+    border_list = [(0,0),(0,0),(4,8)] #Expected borders that draw_curve function will return
            
-    returned_tuple = draw_curve(original,"blood",[(0,0),(4,8)])
+    returned_tuple = draw_curve(original,"blood",[(0,0),(4,8)]) #Draw curve returns a tuple index 1 is the image, and index 2 are the borders
     curve_image = returned_tuple[0]
     curve_border = returned_tuple[1]
     for x,y,col in curve_image:   # col is the Color object for the pixel @ (x,y)
         check_equal("Checking pixel @(" + str(x) + "," + str(y) + ")" , col,get_color(expected,x,y))
+        
+    for i in range(len(border_list)):
+        check_equal("Checking border No." +str(i+1)+ " @ x-coordinate:",border_list[i][0],curve_border[i][0])
+        check_equal("Checking border No." +str(i+1)+ " @ y-coordinate:",border_list[i][1],curve_border[i][1])
+         
+                
+    
 
-    if border_list == curve_border:
-        print("Border's match with expected, test PASSED")
-    else:
-        print("Border's do not match with expected, test FAILED")
+    
+
 
 if __name__ == "__main__":
     test_draw_curve()
