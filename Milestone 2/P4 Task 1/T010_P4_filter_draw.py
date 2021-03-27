@@ -1,4 +1,5 @@
 #Adnan Hafeez 101210710
+#Milestone 2 P4 Task 1 Draw Curve Filter
 
 #Import relevant libraries
 from Cimpl import choose_file, load_image, show, Image, copy, create_color, set_color, get_color, create_image,\

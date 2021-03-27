@@ -1,4 +1,6 @@
 #Adnan Hafeez 101210710
+#Milestone 2 P4 Task 1 Test Function for Horizontal Filter.
+
 
 #Import all relevant libraries
 from Cimpl import choose_file, load_image, show, Image, copy, create_color, set_color, get_color, create_image
