@@ -158,7 +158,7 @@ def flip_horizontal(original_image:Image) -> Image:
     The result is an mirrored copy of original_image called h_flipped_image
     
     >>>original_image = load_image(choosefile())
-    >>>three_tone_image = flip_horizontal(original_image)
+    >>>h_flipped_image = flip_horizontal(original_image)
     >>>show(h_flipped_image)
     """        
     h_flipped_image= copy(original_image)
