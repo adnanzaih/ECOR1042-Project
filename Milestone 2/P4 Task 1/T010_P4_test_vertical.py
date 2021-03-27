@@ -15,23 +15,23 @@ def test_vertical() -> None:
     """
     
     #Creates an image with 6 pixels
-    original = create_image(6,1)
+    original = create_image(1,6)
     set_color(original, 0, 0,  create_color(60, 80, 240))
-    set_color(original, 1, 0,  create_color(80, 150, 200))
-    set_color(original, 2, 0,  create_color(100, 100, 100))
-    set_color(original, 3, 0,  create_color(20, 255, 150))    
-    set_color(original, 4, 0,  create_color(0, 0, 0))
-    set_color(original, 5, 0,  create_color(210, 140, 90))
+    set_color(original, 0, 1,  create_color(80, 150, 200))
+    set_color(original, 0, 2,  create_color(100, 100, 100))
+    set_color(original, 0, 3,  create_color(20, 255, 150))    
+    set_color(original, 0, 4,  create_color(0, 0, 0))
+    set_color(original, 0, 5,  create_color(210, 140, 90))
             
     
     #Expected transformation of image
-    expected = create_image(6, 1)
+    expected = create_image(1, 6)
     set_color(expected, 0, 0,  create_color(210, 140, 90)) 
-    set_color(expected, 1, 0,  create_color(0, 0, 0)) 
-    set_color(expected, 2, 0,  create_color(20, 255, 150)) 
-    set_color(expected, 3, 0,  create_color(100, 100, 100)) 
-    set_color(expected, 4, 0,  create_color(80, 150, 200)) 
-    set_color(expected, 5, 0,  create_color(60, 80, 240)) 
+    set_color(expected, 0, 1,  create_color(0, 0, 0)) 
+    set_color(expected, 0, 2,  create_color(20, 255, 150)) 
+    set_color(expected, 0, 3,  create_color(100, 100, 100)) 
+    set_color(expected, 0, 4,  create_color(80, 150, 200)) 
+    set_color(expected, 0, 5,  create_color(60, 80, 240)) 
    
     #Comparing expected image to the image produced by flip_vertical
     vertical_img = flip_vertical(original)   
