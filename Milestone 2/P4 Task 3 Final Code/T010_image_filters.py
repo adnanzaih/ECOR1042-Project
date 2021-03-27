@@ -1,5 +1,5 @@
 from Cimpl import *
-
+from simple_Cimpl_filters import grayscale
 #Ayesha Dassanayake T010 101180472
 def extreme_contrast(image: Image) -> Image:
 
@@ -401,29 +401,23 @@ if __name__ == "__main__":
     new_image = extreme_contrast(image)
     show(new_image)
     
-    image = load_image(choose_file())
     posterized_image = posterize(image)
     show(posterized_image)    
 
-    file = load_image(choose_file())
-    show(sepia_filter(file))
+    show(sepia_filter(image))
 
-    original_image = load_image(choose_file())
-    three_tone_image = three_tone(original_image,"lemon","blood","black")
+    three_tone_image = three_tone(image,"lemon","blood","black")
     show(three_tone_image)
     
-    original_image = load_image(choose_file())
-    h_flipped_image = flip_horizontal(original_image)
+    h_flipped_image = flip_horizontal(image)
     show(h_flipped_image)    
 
-    file = load_image(choose_file())
-    show(flip_vertical(file))
+    #file = load_image(choose_file())
+    show(flip_vertical(image))
     
-    image = load_image(choose_file())
     new_image = detect_edges(image,8)
     show(new_image)       
     
-    image = load_image(choose_file())
     output = draw_curve(image, "lemon", pointList=None)
     print(output[1])
     show(output[0])    
