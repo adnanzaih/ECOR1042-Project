@@ -5,11 +5,8 @@ from Cimpl import choose_file, load_image, copy, create_color, set_color, \
 
 from unit_testing import check_equal
 
-
-
-
-
-    
+from simple_Cimpl_filters import grayscale
+ 
 def test_extreme_contrast() -> None:
     """
     Vincent Chen, 101196001
@@ -36,7 +33,7 @@ def test_extreme_contrast() -> None:
     filtered_image = extreme_contrast(original_image)
     
     # Comparing the transformed image returned by the filter with the expected image, one pixel at a time.  
-    print("Testing extreme contrast")
+    
     for x, y, col in filtered_image:
         check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')', col, get_color(expected_image, x, y))
         
@@ -156,7 +153,6 @@ def test_draw_curve():
     tests the draw curve function
     >>>test_draw_curve()    
     """
-    print ("Testing draw cruve")
         
     test_image_color = create_color(255,255,255) 
         
@@ -321,11 +317,20 @@ def test_vertical() -> None:
 #Main Script
 
 if __name__ == "__main__":
+    
+    print("Testing extreme contrast")
     test_extreme_contrast()
+    print("testing Posterize filter")
     test_posterize()
+    print("testing sepia filter")
     test_sepia()
+    print("testing three tone filter")
     test_three_tone()
+    print("testing draw curve")
     test_draw_curve()
+    print("testing edge detection")
     test_edge()
+    print("testing horizontal filter")
     test_horizontal()
+    print("testing vertical filter")
     test_vertical()
