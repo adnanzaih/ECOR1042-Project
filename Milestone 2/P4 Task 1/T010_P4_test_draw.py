@@ -61,17 +61,11 @@ def test_draw_curve():
     curve_border = returned_tuple[1]
     for x,y,col in curve_image:   # col is the Color object for the pixel @ (x,y)
         check_equal("Checking pixel @(" + str(x) + "," + str(y) + ")" , col,get_color(expected,x,y))
-        
-    for i in range(len(border_list)):
-        if border_list[i][0] == curve_border[i][0] and  border_list[i][1] == curve_border[i][1]:
-            print("Borders match, pass")
-        else:
-            print("Borders dont match, failed")
-                
-    
 
-    
-
+    if border_list == curve_border:
+        print("Border's match with expected, test PASSED")
+    else:
+        print("Border's do not match with expected, test FAILED")
 
 if __name__ == "__main__":
     test_draw_curve()

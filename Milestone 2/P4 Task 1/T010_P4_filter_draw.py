@@ -14,6 +14,10 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
     Returns a copy of the original image with a line draw ontop of the image given the input colour and a polynomial
     fitted to the points provided by the user.
 
+    >>> image = load_image(choose_file())
+    >>> output = draw_curve(image, "lemon", pointList=None)
+    >>> print(output[1])
+    >>> show(output[0])
     Author: Adnan Hafeez
     """
     img_height = get_height(image)
@@ -23,7 +27,12 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
         """
         Simple colour picking function, takes in a string name for the colour and returns a tuple of the RGB values of the
         colour.
-
+        >>>_pick_color("blood")
+        >>> (255,0,0)
+        >>>_pick_color("green")
+        >>> (0,255,0)
+        >>>_pick_color("blacj")
+        >>> (0,0,0)
         Author: Adnan Hafeez
         """
         color_lst = [("black",0,0,0),("white", 255,255,255),
@@ -38,6 +47,12 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
     def _request_points(numPoints) -> list:
         """Interactively request points from the user if not inputted in the original function call.
         Return the points sorted in ascending order as a list.
+        >>> _request_points(2) #inputs (1,1) and (2,2)
+        >>> [(1,1), (2,2)]
+        >>> _request_points(3) #inputs (1,1) and (2,2) and (3,4)
+        >>> [(1,1), (2,2),(3,4)]
+        >>> _request_points(2) #inputs (1,1) and (2,2) and (4,5)
+        >>> [(1,1), (2,2),(4,5)]
         Author: Adnan Hafeez
         """
         point_list = []
@@ -51,6 +66,12 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
         """
         Performs a 1 degree polynomial fit if the number of points submitted by the user is 2, and a quadratic fit 
         if points are greater than 2.
+        >>> _interpolation([(1,2),(3,4)])
+        >>> [1. 1.]
+        >>> _interpolation([(12, 102), (14, 123), (160, 210)]
+        >>> [ -0.06691966  12.23991114 -35.24250278]
+        >>> _interpolation([(1, 2), (3, 4), (5, 6), (7, 8), (9, 10)])
+        >>> [2.92038426e-17 1.00000000e+00 1.00000000e+00]
         Author: Adnan Hafeez
         """""
 
@@ -64,7 +85,12 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
     def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> int:
         """Solves f(x)-val = 0 for x between 0 and max_x where polycoeff contains the coefficients of f,
         using EPSILON = 1. Returns None if there is no solution between the bounds.
-
+        >>> _exhaustive_search(640,[2.92038426e-17 1.00000000e+00 1.00000000e+00],0)
+        >>> None
+        >>> _exhaustive_search(640,[2.92038426e-17 1.00000000e+00 1.00000000e+00],480)
+        >>> 477
+        >>> _exhaustive_search(640,[0.33444816 99.66555184],480)
+        >>> None
         Author: Adnan Hafeez
         """
         EPSILON = 1
@@ -88,7 +114,12 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
         """
         Takes the size of the image and interpolation coefficients of the polynomial function.
         Returns the pixels where the curve intersects the image borders.
-
+        >>> _image_border_finding([640,480],[2.92038426e-17 1.00000000e+00 1.00000000e+00])
+        [(0, 1), (477, 478)]
+        >>> _image_border_finding([640,480],[ 0.33444816 99.66555184])
+        [(0, 100), (640, 313)]
+        >>> _image_border_finding([640,480],[[ 1.00000000e+00 -1.38076004e-14]])
+        [(0, 0), (0, 0), (479, 479)]
         Author: Adnan Hafeez
         """
         #image_size[0] = image height
