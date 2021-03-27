@@ -18,4 +18,4 @@ def flip_vertical(image: Image)-> Image:
         
 if __name__ == "__main__":
     file = load_image(choose_file())
-    show(flip_veritcal(file))
+    show(flip_vertical(file))
