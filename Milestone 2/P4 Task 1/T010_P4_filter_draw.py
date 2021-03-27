@@ -170,7 +170,7 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
 
 if __name__ == "__main__":
     image = load_image(choose_file())
-    output = draw_curve(image, "lemon", pointList=None)
+    output = draw_curve(image, "blood", pointList=None)
     print(output[1])
     show(output[0])
 
