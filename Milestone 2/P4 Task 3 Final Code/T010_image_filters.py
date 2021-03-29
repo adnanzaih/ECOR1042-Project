@@ -1,5 +1,10 @@
+#Import relevant libraries
 from Cimpl import *
 from simple_Cimpl_filters import grayscale
+from point_manipulation import sort_points,  get_x_y_lists #import useful libraries for sorting
+from math import floor
+import numpy as np #for interpolation
+
 #Ayesha Dassanayake T010 101180472
 def extreme_contrast(image: Image) -> Image:
 
@@ -230,11 +235,6 @@ def detect_edges(image: Image, threshold: int) -> Image:
 
 
 #Adnan Hafeez 101210710
-#Import relevant libraries
-from point_manipulation import sort_points,  get_x_y_lists #import useful libraries for sorting
-from math import floor
-import numpy as np #for interpolation
-
 
 def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
     """
