@@ -12,6 +12,11 @@ def batch_analysis(filename: str) -> None:
             if word != '':
                 # Storing the words in a set discards any duplicates.
                 word_list_new += [word]
+        print(line)
+        load_img = load_image(word_list_new[0])
+        for filter in range(len(line)-2):
+            load_img = filter_array(load_img, line[filter+2])
+        show(load_img)
     infile.close()
     # Now build the list of distinct words.
     word_list_new = list(word_list)
@@ -36,8 +41,3 @@ def filter_array(image: Image, filter_id: str) -> Image:
     return image
 
 command_sequence = batch_analysis('sample.txt')
-print(command_sequence)
-load_img = load_image(command_sequence[0])
-for filter in range(len(command_sequence)-2):
-    load_img = filter_array(load_img, command_sequence[filter+2])
-show(load_img)
