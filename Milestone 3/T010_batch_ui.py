@@ -10,13 +10,14 @@ def batch_analysis(filename: str) -> None:
         word_list = line.split()
         for word in word_list:
             if word != '':
-                # Storing the words in a set discards any duplicates.
                 word_list_new += [word]
         print(line)
         load_img = load_image(word_list_new[0])
         for filter in range(len(line)-2):
             load_img = filter_array(load_img, line[filter+2])
         show(load_img)
+        save_as(load_img, word_list_new[1])
+        word_list_new = [] #reset the line to empty
     infile.close()
     # Now build the list of distinct words.
     word_list_new = list(word_list)
