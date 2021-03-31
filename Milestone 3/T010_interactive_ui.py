@@ -3,7 +3,7 @@ from Cimpl import *
 
 options = "L)oad Image    S)ave-as \n3)-tone    X)treme contrast    T)int sepia    P)osterize \nE)dge detect    D)raw curve    V)ertical flip    H)orizontal flip \nQ)uit \n:"
 valid_commands = {'L','S','3','X',"T","P","E","D","V","H","Q"}
-valid_filters = {'3':three_tone,'X':extreme_contrast,"T":sepia_filter,"P":posterize,"V":flip_vertical,"H":flip_horizontal}
+valid_filters = {'X':extreme_contrast,"T":sepia_filter,"P":posterize,"V":flip_vertical,"H":flip_horizontal}
 command = ""
 load_img = []
 print(options)
@@ -19,7 +19,10 @@ while command.upper() != "Q":
              load_img = detect_edges(load_img, int(threshold))
              show(load_img)
         elif command.upper() == "D":
-             load_img = draw_curve(load_img,"aqua", pointList=None)[0]
+             load_img = draw_curve(load_img,"lemon", pointList=None)[0]
+             show(load_img)
+        elif command.upper() == "3":
+             load_img = three_tone(load_img,"aqua","blood","lemon")
              show(load_img)
         elif command.upper() in valid_filters:
             load_img = valid_filters[command.upper()](load_img)
