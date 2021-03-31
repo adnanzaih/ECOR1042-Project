@@ -1,2 +1,4 @@
-great_big_c.jpg test1.jpg H E
-miss_sullivan.jpg test2.jpg V
+miss_sullivan.jpg test1.jpg T
+miss_sullivan.jpg test2.jpg T P
+miss_sullivan.jpg test3.jpg T V
+miss_sullivan.jpg test4.jpg T H E X

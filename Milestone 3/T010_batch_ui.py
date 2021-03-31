@@ -1,7 +1,5 @@
 from T010_image_filters import *
 from Cimpl import *
-import string
-from typing import List
 
 def batch_analysis(filename: str) -> None:
     infile = open(filename, "r")
@@ -11,11 +9,9 @@ def batch_analysis(filename: str) -> None:
         for word in word_list:
             if word != '':
                 word_list_new += [word]
-        print(line)
         load_img = load_image(word_list_new[0])
-        for filter in range(len(line)-2):
-            load_img = filter_array(load_img, line[filter+2])
-        show(load_img)
+        for filter in range(len(word_list)-2):
+            load_img = filter_array(load_img, word_list[filter+2])
         save_as(load_img, word_list_new[1])
         word_list_new = [] #reset the line to empty
     infile.close()
@@ -27,17 +23,17 @@ def batch_analysis(filename: str) -> None:
 def filter_array(image: Image, filter_id: str) -> Image:
     if filter_id == "3":
         image = three_tone(image,"aqua","blood","lemon")
-    if filter_id == "X":
+    elif filter_id == "X":
         image = extreme_contrast(image)
-    if filter_id == "T":
-        image = sepia_filter(image, )
-    if filter_id == "P":
+    elif filter_id == "T":
+        image = sepia_filter(image)
+    elif filter_id == "P":
         image = posterize(image)
-    if filter_id == "E":
+    elif filter_id == "E":
         image = detect_edges(image,15)
-    if filter_id == "V":
+    elif filter_id == "V":
         image = flip_vertical(image)
-    if filter_id == "H":
+    elif filter_id == "H":
         image = flip_horizontal(image)
     return image
 
