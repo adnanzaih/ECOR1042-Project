@@ -35,6 +35,7 @@ def filter_array(image: Image, filter_id: str) -> Image:
         image = flip_vertical(image)
     elif filter_id == "H":
         image = flip_horizontal(image)
+    show(image)
     return image
 
-command_sequence = batch_analysis('sample.txt')
+command_sequence = batch_analysis(input("Enter a filename: "))
