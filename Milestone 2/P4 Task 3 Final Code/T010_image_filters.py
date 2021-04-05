@@ -20,6 +20,23 @@ def red_channel(image: Image) -> Image:
         set_color(copy_image, x, y, create_color(r,0,0))  #set the colour to only contain the red value the pixel originally had      
     return copy_image
 
+def green_channel(image : Image)-> Image:
+ """
+ returns a copy of the original image that now only contains the green components of each pixel
+ >>>orginal_image =load_image(choosefile())
+ >>>new_image = green_channel(original_image)
+ >>>show(new_image)
+ """
+ green_image = copy(image) #Copies the original image onto variable green_image
+ 
+ for pixel in green_image: #iterates over every pixel in the image and take only the green component of each pixel
+  x, y, (r, g, b) = pixel
+  new_colour = create_color( 0,g,0)
+  set_color (green_image, x, y, create_color(0,g,0))
+  
+ return green_image #returns the filtered green image
+
+
 #Ayesha Dassanayake T010 101180472
 def extreme_contrast(image: Image) -> Image:
 
