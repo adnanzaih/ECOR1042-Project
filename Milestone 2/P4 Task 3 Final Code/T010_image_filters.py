@@ -6,10 +6,6 @@ from math import floor
 import numpy as np #for interpolation
 
 #Logan DeLaat - T010 - 101182975
-
-from Cimpl import *
-from unit_testing import *
-
 #fuction definitions
 def red_channel(image: Image) -> Image:
     """
