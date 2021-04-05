@@ -56,6 +56,29 @@ def blue_channel(image: Image) -> Image:
 
     return blue_img
 
+
+def combine(red: Image, green: Image, blue:Image) -> Image:
+    """
+    #Adnan Hafeez - T010 - 101210710
+    Return an image that is a combination of the red, blue and green channels.
+    By loading a red, green and blue filtered
+    set of images in that specific order only.
+    >>> red_img = load_image(choose_file())
+    >>> green_img = load_image(choose_file())
+    >>> blue_img = load_image(choose_file())
+    >>> combined = combine(red_img, green_img, blue_img)
+    >>> show(combined)
+    """
+    new_image = copy(red)
+    for x, y, _ in red:
+        red_pixel = get_color(red,x,y)
+        green_pixel = get_color(green,x,y)
+        blue_pixel = get_color(blue,x,y)
+        combined_colors = create_color(red_pixel[0], green_pixel[1], blue_pixel[2])
+        set_color(new_image, x,y, combined_colors)
+    return new_image
+
+
 #Ayesha Dassanayake T010 101180472
 def extreme_contrast(image: Image) -> Image:
 
