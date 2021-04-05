@@ -36,6 +36,25 @@ def green_channel(image : Image)-> Image:
   
  return green_image #returns the filtered green image
 
+#Ayesha Dassanayake T010 101180472
+def blue_channel(image: Image) -> Image:
+
+    """
+    Author: Ayesha Dassanayake
+    
+    Returns a new png image containing only the blue components of the pixels in the original image
+    >>> image = load_image(choose_file())
+    >>> new_image = blue_channel(image)
+    >>> show(new_image)
+    """
+    blue_img = copy(image)
+
+    #removes red and green components from each pixel
+    for x,y,(r,g,b) in image:
+        blue = create_color(0,0,b)
+        set_color(blue_img,x,y,blue)
+
+    return blue_img
 
 #Ayesha Dassanayake T010 101180472
 def extreme_contrast(image: Image) -> Image:
