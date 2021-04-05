@@ -5,6 +5,25 @@ from point_manipulation import sort_points,  get_x_y_lists #import useful librar
 from math import floor
 import numpy as np #for interpolation
 
+#Logan DeLaat - T010 - 101182975
+
+from Cimpl import *
+from unit_testing import *
+
+#fuction definitions
+def red_channel(image: Image) -> Image:
+    """
+    Author Logan DeLaat
+    Returns a copy of the image in png format which only contains the red components of the original image's pixel's colour
+    >>> image = load_image(choose_file())
+    >>> show(red_channel(image))
+    """
+
+    copy_image = copy(image) #creates copy of image to be changed
+    for x, y, (r, g, b) in image: #looks through all values of each pixel in the image
+        set_color(copy_image, x, y, create_color(r,0,0))  #set the colour to only contain the red value the pixel originally had      
+    return copy_image
+
 #Ayesha Dassanayake T010 101180472
 def extreme_contrast(image: Image) -> Image:
 
