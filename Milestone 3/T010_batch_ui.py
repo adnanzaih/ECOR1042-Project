@@ -1,13 +1,14 @@
+#P5 Task 2 Batch user interface
+#T010 Vincent Chen, Adnan Hafeez, Logan Delaat, Ayesha Dassanayake
+
 from T010_image_filters import *
 from Cimpl import *
 
 def batch_analysis(filename: str) -> None:
     """
-    Main Function that runs the batch_analysis given an input that describes the name of the text file without
-    any extensions.
-    Authors: Team T010
+    returns a list of strings from filename
     """
-
+    
     infile = open(filename, "r")
     word_list_new = []
     for line in infile:
@@ -27,6 +28,13 @@ def batch_analysis(filename: str) -> None:
 
 
 def filter_array(image: Image, filter_id: str) -> Image:
+    """
+    returns an image that has been passed through the filters given by the filter_id
+    in the order written in the filename.
+    
+    >>>Enter a filename: sample.txt
+    """
+    
     if filter_id == "3":
         image = three_tone(image,"aqua","blood","lemon")
     elif filter_id == "X":
@@ -41,7 +49,7 @@ def filter_array(image: Image, filter_id: str) -> Image:
         image = flip_vertical(image)
     elif filter_id == "H":
         image = flip_horizontal(image)
-    show(image)
+        
     return image
 
-command_sequence = batch_analysis(input("Enter a filename without extensions: "))
+command_sequence = batch_analysis(input("Enter a filename: "))
