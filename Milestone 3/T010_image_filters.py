@@ -1,3 +1,6 @@
+#P5 Task 2 image filters
+#T010 Vincent Chen, Adnan Hafeez, Logan Delaat, Ayesha Dassanayake
+
 #Import relevant libraries
 from Cimpl import *
 from simple_Cimpl_filters import grayscale
@@ -5,14 +8,64 @@ from point_manipulation import sort_points,  get_x_y_lists #import useful librar
 from math import floor
 import numpy as np #for interpolation
 
+#Logan DeLaat - T010 - 101182975
+#fuction definitions
+def red_channel(image: Image) -> Image:
+    """
+    Author Logan DeLaat
+    Returns a copy of the image in png format which only contains the red components of the original image's pixel's colour
+    >>> image = load_image(choose_file())
+    >>> show(red_channel(image))
+    """
+
+    copy_image = copy(image) #creates copy of image to be changed
+    for x, y, (r, g, b) in image: #looks through all values of each pixel in the image
+        set_color(copy_image, x, y, create_color(r,0,0))  #set the colour to only contain the red value the pixel originally had      
+    return copy_image
+
+def green_channel(image : Image)-> Image:
+    """
+    returns a copy of the original image that now only contains the green components of each pixel
+    >>>orginal_image =load_image(choosefile())
+    >>>new_image = green_channel(original_image)
+    >>>show(new_image)
+    """
+    green_image = copy(image) #Copies the original image onto variable green_image
+ 
+    for pixel in green_image: #iterates over every pixel in the image and take only the green component of each pixel
+        x, y, (r, g, b) = pixel
+        new_colour = create_color( 0,g,0)
+        set_color (green_image, x, y, create_color(0,g,0))
+  
+    return green_image #returns the filtered green image
+
+#Ayesha Dassanayake T010 101180472
+def blue_channel(image: Image) -> Image:
+
+    """
+    Author: Ayesha Dassanayake
+    
+    Returns a new png image containing only the blue components of the pixels in the original image
+    >>> image = load_image(choose_file())
+    >>> new_image = blue_channel(image)
+    >>> show(new_image)
+    """
+    blue_img = copy(image)
+
+    #removes red and green components from each pixel
+    for x,y,(r,g,b) in image:
+        blue = create_color(0,0,b)
+        set_color(blue_img,x,y,blue)
+
+    return blue_img
+
+
 def combine(red: Image, green: Image, blue:Image) -> Image:
     """
     #Adnan Hafeez - T010 - 101210710
-
     Return an image that is a combination of the red, blue and green channels.
     By loading a red, green and blue filtered
     set of images in that specific order only.
-
     >>> red_img = load_image(choose_file())
     >>> green_img = load_image(choose_file())
     >>> blue_img = load_image(choose_file())
@@ -28,54 +81,6 @@ def combine(red: Image, green: Image, blue:Image) -> Image:
         set_color(new_image, x,y, combined_colors)
     return new_image
 
-#Ayesha Dassanayake
-def blue_channel(image: Image) -> Image:
-
-    """
-    Returns a new png image containing only the blue components of the pixels in the original image
-    >>> image = load_image(choose_file())
-    >>> new_image = blue_channel(image)
-    >>> show(new_image)
-    """
-    blue_img = copy(image)
-
-    #removes red and green components from each pixel
-    for x,y,(r,g,b) in image:
-        blue = create_color(0,0,b)
-        set_color(blue_img,x,y,blue)
-
-    return blue_img
-
-#Vincent Chen
-def green_channel(image : Image)-> Image:
-    """
-    returns a copy of the original image that now only contains the green components of each pixel
-    >>>orginal_image =load_image(choosefile())
-    >>>new_image = green_channel(original_image)
-    >>>show(new_image)
-    """
-    green_image = copy(image) #Copies the original image onto variable green_image
-
-    for pixel in green_image: #iterates over every pixel in the image and take only the green component of each pixel
-        x, y, (r, g, b) = pixel
-        new_colour = create_color( 0,g,0)
-        set_color (green_image, x, y, create_color(0,g,0))
-
-    return green_image #returns the filtered green image
-
-#Logan Delaat
-def red_channel(image: Image) -> Image:
-    """
-    Author Logan DeLaat
-    Returns a copy of the image in png format which only contains the red components of the original image's pixel's colour
-    >>> image = load_image(choose_file())
-    >>> show(red_channel(image))
-    """
-
-    copy_image = copy(image) #creates copy of image to be changed
-    for x, y, (r, g, b) in image: #looks through all values of each pixel in the image
-        set_color(copy_image, x, y, create_color(r,0,0))  #set the colour to only contain the red value the pixel originally had
-    return copy_image
 
 #Ayesha Dassanayake T010 101180472
 def extreme_contrast(image: Image) -> Image:
@@ -470,6 +475,18 @@ def draw_curve(image: Image, color:str, pointList: list) -> (Image, list):
 
 if __name__ == "__main__":
     image = load_image(choose_file())
+    
+    red_image = red_channel(image)
+    show(red_image)
+    
+    green_image = green_channel(image)
+    show(green_image)
+    
+    blue_image = blue_channel(image)
+    show(blue_image)
+    
+    show(combine(red_image, green_image, blue_image))
+                            
     new_image = extreme_contrast(image)
     show(new_image)
     
