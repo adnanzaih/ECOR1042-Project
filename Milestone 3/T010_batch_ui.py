@@ -2,6 +2,12 @@ from T010_image_filters import *
 from Cimpl import *
 
 def batch_analysis(filename: str) -> None:
+    """
+    Main Function that runs the batch_analysis given an input that describes the name of the text file without
+    any extensions.
+    Authors: Team T010
+    """
+
     infile = open(filename, "r")
     word_list_new = []
     for line in infile:
@@ -38,4 +44,4 @@ def filter_array(image: Image, filter_id: str) -> Image:
     show(image)
     return image
 
-command_sequence = batch_analysis(input("Enter a filename: "))
+command_sequence = batch_analysis(input("Enter a filename without extensions: "))
