@@ -15,7 +15,8 @@ def execute()-> Image:
     
     valid_commands = {'L','S','3','X',"T","P","E","D","V","H","Q"}
     valid_filters = {'X':extreme_contrast,"T":sepia_filter,"P":posterize,"V":flip_vertical,"H":flip_horizontal}
-    def display_menu():
+    def display_menu() -> None:
+        """Displays menu options when called. """
         options = "L)oad Image    S)ave-as \n3)-tone    X)treme contrast    T)int sepia    P)osterize \nE)dge detect    D)raw curve    V)ertical flip    H)orizontal flip \nQ)uit \n:"
         print(options)
 
