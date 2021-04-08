@@ -13,15 +13,17 @@ def execute()-> Image:
     >>>execute()
     """
     
-    options = "L)oad Image    S)ave-as \n3)-tone    X)treme contrast    T)int sepia    P)osterize \nE)dge detect    D)raw curve    V)ertical flip    H)orizontal flip \nQ)uit \n:"
     valid_commands = {'L','S','3','X',"T","P","E","D","V","H","Q"}
     valid_filters = {'X':extreme_contrast,"T":sepia_filter,"P":posterize,"V":flip_vertical,"H":flip_horizontal}
-    print(options)    
+    def display_menu():
+        options = "L)oad Image    S)ave-as \n3)-tone    X)treme contrast    T)int sepia    P)osterize \nE)dge detect    D)raw curve    V)ertical flip    H)orizontal flip \nQ)uit \n:"
+        print(options)
+
+    display_menu()
     command = ""
     load_img = []
     
     while command.upper() != "Q":
-        command = ""
         command = input()
         
         if command.upper() == "L":
@@ -61,7 +63,7 @@ def execute()-> Image:
             if command.upper() not in valid_commands:
                 print("no such command")
 
-        print(options)
+        display_menu()
     print("Quitting program")
     
 if __name__ == "__main__":
